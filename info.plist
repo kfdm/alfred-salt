@@ -6,7 +6,18 @@
 	<string>net.kungfudiscomonkey.salt</string>
 	<key>connections</key>
 	<dict>
-		<key>6C68D0BB-A89A-4FDD-BB99-B5A5B460646E</key>
+		<key>31A3EFD5-3C8F-48BC-BBC5-7119F7695B32</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>1DEE813D-94CF-44D1-9352-80DA064DE39F</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>399EC4D8-E8B6-45A4-B7EB-A742BF933935</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
@@ -31,6 +42,41 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>keyword</key>
+				<string>salt jobs</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Running Command</string>
+				<key>script</key>
+				<string>python salt.py jobs</string>
+				<key>title</key>
+				<string>Get recent Salt Jobs</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>399EC4D8-E8B6-45A4-B7EB-A742BF933935</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
@@ -51,11 +97,11 @@
 			<key>config</key>
 			<dict>
 				<key>argumenttype</key>
-				<integer>1</integer>
+				<integer>2</integer>
 				<key>escaping</key>
 				<integer>127</integer>
 				<key>keyword</key>
-				<string>salt</string>
+				<string>salt ping</string>
 				<key>queuedelaycustom</key>
 				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
@@ -67,18 +113,18 @@
 				<key>runningsubtext</key>
 				<string>Running Command</string>
 				<key>script</key>
-				<string>python salt.py {query}</string>
+				<string>python salt.py ping</string>
 				<key>title</key>
-				<string>Run Salt Command</string>
+				<string>Ping Salt Minions</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
-				<true/>
+				<false/>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
-			<string>6C68D0BB-A89A-4FDD-BB99-B5A5B460646E</string>
+			<string>31A3EFD5-3C8F-48BC-BBC5-7119F7695B32</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -92,7 +138,12 @@
 			<key>ypos</key>
 			<real>60</real>
 		</dict>
-		<key>6C68D0BB-A89A-4FDD-BB99-B5A5B460646E</key>
+		<key>31A3EFD5-3C8F-48BC-BBC5-7119F7695B32</key>
+		<dict>
+			<key>ypos</key>
+			<real>180</real>
+		</dict>
+		<key>399EC4D8-E8B6-45A4-B7EB-A742BF933935</key>
 		<dict>
 			<key>ypos</key>
 			<real>60</real>

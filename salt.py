@@ -26,7 +26,7 @@ def salt(func):
             cli = pepper.cli.PepperCli()
             cli.parse()
             opts = cli.get_login_details()
-            api = pepper.Pepper(opts['SALTAPI_URL'], True)
+            api = pepper.Pepper(opts['SALTAPI_URL'])
             api.login(opts['SALTAPI_USER'], opts['SALTAPI_PASS'], opts['SALTAPI_EAUTH'])
             kwargs['api'] = api
         except pepper.PepperException, e:
@@ -55,16 +55,10 @@ def ping(wf, api):
 
 def main(wf):
     if len(wf.args):
-        if wf.args[0] == 'redirect':
-            return redirect(wf.args[1:])
         if wf.args[0] == 'jobs':
             return jobs(wf)
         if wf.args[0] == 'ping':
             return ping(wf)
-    wf.add_item('Unknown Command [%s]' % ' '.join(wf.args))
-    wf.add_item('List Jobs', arg='redirect jobs', valid=True)
-    wf.add_item('Ping', arg='redirect ping', valid=True)
-    wf.send_feedback()
 
 if __name__ == '__main__':
     sys.exit(main(workflow.Workflow()))
