@@ -7,7 +7,16 @@
 	<key>connections</key>
 	<dict>
 		<key>6C68D0BB-A89A-4FDD-BB99-B5A5B460646E</key>
-		<array/>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>1DEE813D-94CF-44D1-9352-80DA064DE39F</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
 	</dict>
 	<key>createdby</key>
 	<string>Paul Traylor</string>
@@ -22,6 +31,25 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>python salt.py {query}</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>1DEE813D-94CF-44D1-9352-80DA064DE39F</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>argumenttype</key>
 				<integer>1</integer>
 				<key>escaping</key>
@@ -29,15 +57,17 @@
 				<key>keyword</key>
 				<string>salt</string>
 				<key>queuedelaycustom</key>
-				<integer>1</integer>
+				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
-				<false/>
+				<true/>
 				<key>queuedelaymode</key>
 				<integer>0</integer>
 				<key>queuemode</key>
 				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Running Command</string>
 				<key>script</key>
-				<string>python salt.py list</string>
+				<string>python salt.py {query}</string>
 				<key>title</key>
 				<string>Run Salt Command</string>
 				<key>type</key>
@@ -57,6 +87,11 @@
 	<string></string>
 	<key>uidata</key>
 	<dict>
+		<key>1DEE813D-94CF-44D1-9352-80DA064DE39F</key>
+		<dict>
+			<key>ypos</key>
+			<real>60</real>
+		</dict>
 		<key>6C68D0BB-A89A-4FDD-BB99-B5A5B460646E</key>
 		<dict>
 			<key>ypos</key>
