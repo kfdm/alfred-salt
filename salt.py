@@ -16,9 +16,7 @@ def run_alfred(query):
         'tell application "Alfred 2" to search "{}"'.format(query)])
 
 
-def redirect(wf):
-    args = wf.args
-    args.remove('redirect')
+def redirect(args):
     run_alfred('salt ' + ' '.join(args))
 
 
@@ -28,7 +26,7 @@ def salt(func):
             cli = pepper.cli.PepperCli()
             cli.parse()
             opts = cli.get_login_details()
-            api = pepper.Pepper(opts['SALTAPI_URL'])
+            api = pepper.Pepper(opts['SALTAPI_URL'], True)
             api.login(opts['SALTAPI_USER'], opts['SALTAPI_PASS'], opts['SALTAPI_EAUTH'])
             kwargs['api'] = api
         except pepper.PepperException, e:
@@ -50,20 +48,22 @@ def jobs(wf, api):
 
 @salt
 def ping(wf, api):
-    cli = PepperCli()
-    cli.parse()
-    opts = cli.get_login_details()
-    api = Pepper(opts['SALTAPI_URL'])
-    api.login(opts['SALTAPI_USER'], opts['SALTAPI_PASS'], opts['SALTAPI_EAUTH'])
+    for result in api.local('*', 'test.ping'):
+        wf.add_item(str(result))
+    wf.send_feedback()
 
 
 def main(wf):
-    if 'redirect' in wf.args:
-        return redirect(wf)
-    if 'jobs' in wf.args:
-        return jobs(wf)
-    wf.add_item('Unknown Command')
+    if len(wf.args):
+        if wf.args[0] == 'redirect':
+            return redirect(wf.args[1:])
+        if wf.args[0] == 'jobs':
+            return jobs(wf)
+        if wf.args[0] == 'ping':
+            return ping(wf)
+    wf.add_item('Unknown Command [%s]' % ' '.join(wf.args))
     wf.add_item('List Jobs', arg='redirect jobs', valid=True)
+    wf.add_item('Ping', arg='redirect ping', valid=True)
     wf.send_feedback()
 
 if __name__ == '__main__':
